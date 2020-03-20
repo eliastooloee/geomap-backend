@@ -1,4 +1,4 @@
-class MapsController < ApplicationController
+class Api::V1::MapsController < ApplicationController
     before_action :find_map, only: [:show, :edit, :update, :destroy]
   
     def index
@@ -15,8 +15,13 @@ class MapsController < ApplicationController
     end
   
     def create
-      @map = Map.create(name: params[:name])
+      @map = Map.new(map_params)
+      byebug
+      if @map.save
       render json: @map
+      else
+        @map.errors.full_messages
+      end
     end
   
     def destroy
