@@ -32,6 +32,10 @@ gem 'rack-cors'
 
 gem 'jwt'
 
+gem 'rgeo'
+
+gem 'rgeo-geojson'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 

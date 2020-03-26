@@ -16,7 +16,7 @@ class Api::V1::MapsController < ApplicationController
   
     def create
       @map = Map.new(map_params)
-      byebug
+      # byebug
       if @map.save
       render json: @map
       else

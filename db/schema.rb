@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_225440) do
+ActiveRecord::Schema.define(version: 2020_03_24_221056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "features", force: :cascade do |t|
+    t.string "feature_data"
+    t.bigint "map_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["map_id"], name: "index_features_on_map_id"
+  end
 
   create_table "maps", force: :cascade do |t|
     t.integer "user_id"
@@ -34,4 +42,5 @@ ActiveRecord::Schema.define(version: 2020_03_17_225440) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "features", "maps"
 end
